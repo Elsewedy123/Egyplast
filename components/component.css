@@ -1,0 +1,111 @@
+.app-component-container {
+  display: flex;
+  position: relative;
+}
+.app-component-form {
+  width: 667px;
+  height: 100%;
+  display: flex;
+  align-self: flex-start;
+  justify-content: flex-start;
+}
+.app-component-container1 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 469px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.app-component-textinput {
+  top: 0%;
+  left: 0px;
+  width: 100%;
+  height: 44px;
+  position: absolute;
+  align-self: flex-start;
+  text-align: center;
+}
+.app-component-text {
+  top: 10%;
+  left: 0px;
+  color: #BF2626;
+  width: 100%;
+  display: none;
+  position: absolute;
+}
+.app-component-container2 {
+  top: 15%;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.app-component-textinput1 {
+  width: 45%;
+  height: auto;
+  align-self: flex-start;
+  text-align: center;
+}
+.app-component-textinput2 {
+  width: 45%;
+  height: auto;
+  align-self: flex-start;
+  text-align: center;
+}
+.app-component-text1 {
+  top: 24%;
+  color: var(--dl-color-danger-500);
+  right: 0px;
+  width: 45%;
+  display: none;
+  position: absolute;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+}
+.app-component-text2 {
+  top: 24%;
+  left: 0px;
+  color: #BF2626;
+  width: 45%;
+  display: none;
+  position: absolute;
+}
+.app-component-textinput3 {
+  top: 29%;
+  left: 0px;
+  width: 100%;
+  height: 44px;
+  position: absolute;
+  align-self: flex-start;
+  text-align: center;
+}
+.app-component-text3 {
+  top: 39.5%;
+  left: 0px;
+  color: var(--dl-color-danger-500);
+  width: 100%;
+  display: none;
+  position: absolute;
+}
+.app-component-textarea {
+  top: 45%;
+  left: 0px;
+  right: 0px;
+  height: 142px;
+  margin: auto;
+  position: absolute;
+}
+.app-component-button {
+  top: 85%;
+  left: 297px;
+  color: #ffffff;
+  position: absolute;
+  align-self: center;
+  background-color: #000000;
+}

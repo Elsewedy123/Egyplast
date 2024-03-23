@@ -1,0 +1,134 @@
+.input-container {
+  height: 59px;
+  display: flex;
+  position: relative;
+}
+.input-text {
+  top: -21px;
+  left: 3px;
+  position: absolute;
+  align-self: flex-start;
+  font-style: normal;
+  font-weight: 500;
+}
+.input-text1 {
+  top: 40px;
+  left: 3px;
+  color: #BF2626;
+  display: none;
+  position: absolute;
+  align-self: flex-start;
+  font-style: normal;
+  margin-top: 0%;
+  font-weight: 500;
+  margin-bottom: 0%;
+}
+.input-textinput {
+  width: 966px;
+  height: 39px;
+  transition: 0.3s;
+  border-style: solid;
+}
+.input-textinput:focus {
+  border-width: 0px;
+  border-radius: 0px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 3px;
+}
+.input-root-class-name {
+  top: 5%;
+  left: 0px;
+  width: 45%;
+  height: auto;
+  position: absolute;
+  align-self: center;
+}
+.input-root-class-name1 {
+  top: 5%;
+  right: 0px;
+  width: 45%;
+  height: auto;
+  margin: auto;
+  position: absolute;
+}
+.input-root-class-name2 {
+  top: 22%;
+  left: 0px;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+}
+.input-root-class-name3 {
+  top: 40%;
+  right: -1px;
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+.input-root-class-name4 {
+  top: 58%;
+  right: -2px;
+  width: 100%;
+  position: absolute;
+}
+.input-root-class-name7 {
+  top: 22%;
+  left: 0px;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+}
+.input-root-class-name8 {
+  top: 45%;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  position: absolute;
+}
+
+.login-form-container {
+  display: flex;
+  position: relative;
+}
+.login-form-form {
+  gap: 0;
+  width: 560px;
+  height: 415px;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  align-self: center;
+  align-items: center;
+  margin-bottom: 0px;
+  justify-content: flex-start;
+}
+.login-form-button {
+  top: 60%;
+  left: 146px;
+  width: 50%;
+  height: 38px;
+  margin: auto;
+  position: absolute;
+  align-self: center;
+  text-align: center;
+  transition: 0.3s;
+}
+.login-form-button:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+.login-form-text {
+  left: 0px;
+  right: 0px;
+  bottom: 9px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+}
+.login-form-root-class-name {
+  align-self: center;
+}
