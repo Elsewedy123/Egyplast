@@ -7,6 +7,12 @@ let userEmail = document.getElementById("email");
 let userPassword = document.getElementById("password");
 let userCPassword = document.getElementById("cpassword");
 
+let contact_name = document.getElementById("name");
+let contact_email = document.getElementById("email");
+let contact_phone = document.getElementById("phone");
+let contact_company = document.getElementById("company");
+let contact_message = document.getElementById("message");
+
 
 let userLoginEmail = document.getElementById("login_email");
 let userLoginPassword = document.getElementById("login_password");
@@ -43,59 +49,123 @@ function validation() {
 function callAll() {
 
   // check for first name
-
-  if(!isEmpty('fname'))
-    if(isLettersOnly('fname'))
+  if (!isEmpty('fname'))
+    if (isLettersOnly('fname'))
       goodToGo = true;
     else
-      changeText('Enter letters only','fname','fname_error');
+      changeText('Enter letters only', 'fname', 'fname_error');
+  else
+    changeText('first name is empty', 'fname', 'fname_error');
+
+  // check for last name
+  if (!isEmpty('lname'))
+    if (isLettersOnly('lname'))
+      goodToGo = true;
     else
-      changeText('first name is empty','fname','fname_error');
-    
-// check for last name
-  if(!isEmpty('lname'))
-    if(isLettersOnly('lname'))
-        goodToGo = true;
-    else
-     changeText('Enter letters only','lname','lname_error');
-    else
-    changeText('first name is empty','lname','lname_error');  
+      changeText('Enter letters only', 'lname', 'lname_error');
+  else
+    changeText('first name is empty', 'lname', 'lname_error');
 
   // check for email
-  if(!isEmpty('email'))
-    if(emailCheck('email'))
-        goodToGo = true;
-    else
-     changeText('Invalid Email','email','email_error');
-    else
-    changeText('Email is empty','lname','email_error');  
-  // check for password
-  if(!isEmpty('password'))
-    validPassword('password','password_error');
-  else
-     changeText('Password is empty','password','password_error'); 
-  // check for confirm password
-  if(!isEmpty('cpassword'))
-    if(validConfirmPassword('password','cpassword','cpassword_error'))
+  if (!isEmpty('email'))
+    if (emailCheck('email'))
       goodToGo = true;
     else
-   changeText('Passwords are not the same','cpassword','cpassword_error');
+      changeText('Invalid Email', 'email', 'email_error');
   else
-  changeText('Passwords is empty','cpassword','cpassword_error');  
-  
+    changeText('Email is empty', 'lname', 'email_error');
+  // check for password
+  if (!isEmpty('password'))
+    validPassword('password', 'password_error');
+  else
+    changeText('Password is empty', 'password', 'password_error');
+  // check for confirm password
+  if (!isEmpty('cpassword'))
+    if (validConfirmPassword('password', 'cpassword', 'cpassword_error'))
+      goodToGo = true;
+    else
+      changeText('Passwords are not the same', 'cpassword', 'cpassword_error');
+  else
+    changeText('Passwords is empty', 'cpassword', 'cpassword_error');
+
   if (isEveryThingValid()) {
     createUser();
     console.log(allusers);
     window.location.href = 'login.html';
-  }else{
-    setTimeout(() => {location.reload()}, 1500);
+  } else {
+    setTimeout(() => { location.reload() }, 1500);
   }
 }
 
 
 
 
-function popup(msg){
+function contactValidate() {
+  let flagger = false;
+  let allIsGood = [];
+  // check for first name
+  if (!isEmpty('name'))
+    if (isLettersOnly('name'))
+    allIsGood.push(true)
+    else{
+       changeText('Enter letters only', 'name', 'name_error');
+       allIsGood.push(false);
+      }
+  else{
+    changeText('Name is empty', 'name', 'name_error');
+    allIsGood.push(false);
+  }
+    
+
+  // check for email
+  if (!isEmpty('email'))
+    if (emailCheck('email'))
+        allIsGood.push(true)
+    else{
+      changeText('Invalid Email', 'email', 'email_error');
+      allIsGood.push(false);
+    }
+  else{
+    changeText('Email is empty', 'email', 'email_error');
+    allIsGood.push(false);
+  }
+    
+
+  // check for phone
+  if (!isEmpty('phone'))
+  allIsGood.push(true)
+  else{
+    changeText('Phone is empty', 'phone', 'phone_error');
+    allIsGood.push(false);
+  }
+    
+  // check for company
+  if (!isEmpty('company'))
+  allIsGood.push(true)
+  else{
+    changeText('Company is empty', 'company', 'company_error');
+    allIsGood.push(false);
+  }
+
+  for (const iterator of allIsGood) {
+    if(iterator)
+    flagger = true;
+  else
+    flagger = false;
+  }
+
+  if(flagger)
+  alert('Message is sent')
+  else 
+    setTimeout(() => { location.reload() }, 1500);
+  
+  
+}
+
+
+
+
+function popup(msg) {
   document.getElementById('msg').innerText = msg;
   document.getElementById('alert').classList.remove("hide");
   document.getElementById('alert').classList.add("show");
@@ -103,15 +173,15 @@ function popup(msg){
   setTimeout(() => {
     document.getElementById('alert').classList.remove("show");
     document.getElementById('alert').classList.add("hide");
-    
+
   }, 1000);
 }
 
-function changeText(msg, inputId,labelId){
+function changeText(msg, inputId, labelId) {
   var input = document.getElementById(inputId);
   var label = document.getElementById(labelId);
   console.log('Running Change text');
-  input.style.border="3px solid red";
+  input.style.border = "3px solid red";
   label.innerHTML = msg;
   label.style.marginTop = "-13px";
   label.style.fontSize = '10px';
@@ -125,23 +195,23 @@ function changeText(msg, inputId,labelId){
   }, 2000);
 }
 function isLettersOnly(inputId) {//, errorMessage,labelId
-  try{
-  var inputElement = document.getElementById(inputId);
-  var lettersRegex = /\d/;
+  try {
+    var inputElement = document.getElementById(inputId);
+    var lettersRegex = /\d/;
 
-  // Test the input against the regular expression
-  var onlyLetters = lettersRegex.test(inputElement.value);
+    // Test the input against the regular expression
+    var onlyLetters = lettersRegex.test(inputElement.value);
 
-  if (onlyLetters) {
-    //changeText(errorMessage,inputId,labelId);
-    inputElement.value = '';
-    goodToGo = false;
-    return false;
-  } else {
-    goodToGo = true;
-    return true;
-  } 
-  }catch (error) {
+    if (onlyLetters) {
+      //changeText(errorMessage,inputId,labelId);
+      inputElement.value = '';
+      goodToGo = false;
+      return false;
+    } else {
+      goodToGo = true;
+      return true;
+    }
+  } catch (error) {
     //console.error('Error in isLettersOnly function:', error.message);
     return false;
   }
@@ -183,7 +253,7 @@ function emailCheck(emailId) {
     return true;
   }
 }
-function validPassword(passId,labelId) {
+function validPassword(passId, labelId) {
   var inputElement = document.getElementById(passId);
   var lengthRegex = /^.{8,}$/;
   var lowercaseRegex = /[a-z]/;
@@ -199,27 +269,27 @@ function validPassword(passId,labelId) {
 
   if (inputElement.value !== '') {
     if (!meetsLength) {
-      changeText("Password is less than 8",passId,labelId);
+      changeText("Password is less than 8", passId, labelId);
       inputElement.value = '';
       goodToGo = false;
     }
     else if (!meetsLowercase) {
-      changeText("Invalid password",passId,labelId);
+      changeText("Invalid password", passId, labelId);
       inputElement.value = '';
       goodToGo = false;
     }
     else if (!meetsUppercase) {
-      changeText("Password must contain upper case letter", passId,labelId);
+      changeText("Password must contain upper case letter", passId, labelId);
       inputElement.value = '';
       goodToGo = false;
     }
     else if (!meetsNumber) {
-      changeText("Password must contain at least one number",passId,labelId);
+      changeText("Password must contain at least one number", passId, labelId);
       inputElement.value = '';
       goodToGo = false;
     }
     else if (!meetsSpecialChar) {
-      changeText("Invalid password", passId,labelId);
+      changeText("Invalid password", passId, labelId);
       inputElement.value = '';
       goodToGo = false;
     } else {
@@ -301,23 +371,23 @@ function createUser() {
 function logIn() {
   console.log(localStorage.getItem("users"));
   //check if email is empty
-    if(!isEmpty('login_email')){
-      // if email not empty then check if password is empty
-      if(!isEmpty('login_password')){
-        // if bot email and password not emppty
-        // then check if users exist in the local storage
-        // if exist then get it and store it
-        if (localStorage.getItem("users")) {
-          let searchedUser = JSON.parse(localStorage.getItem("users"));
+  if (!isEmpty('login_email')) {
+    // if email not empty then check if password is empty
+    if (!isEmpty('login_password')) {
+      // if bot email and password not emppty
+      // then check if users exist in the local storage
+      // if exist then get it and store it
+      if (localStorage.getItem("users")) {
+        let searchedUser = JSON.parse(localStorage.getItem("users"));
         for (let index = 0; index < searchedUser.length; index++) {
           // check for the entered email and password against the local storage
           if (userLoginEmail.value == searchedUser[index].uEmail && userLoginPassword.value == searchedUser[index].uPassword) {
-              flag = true;
-              loginuser = `Welcome to your account Mr/Mrs : "${searchedUser[index].uName}"`;
-              tempiD = searchedUser[index].uID;
-              tempName = searchedUser[index].uName;
-              break;
-              
+            flag = true;
+            loginuser = `Welcome to your account Mr/Mrs : "${searchedUser[index].uName}"`;
+            tempiD = searchedUser[index].uID;
+            tempName = searchedUser[index].uName;
+            break;
+
           }
         }
         // if user is logged successfully, navigate to home
@@ -326,26 +396,26 @@ function logIn() {
           window.location.href = 'index.html';
         } else {
           // if user not logged, throw error to both email and password.
-          changeText("Invalid User email or password", 'login_email','email_error');
-          changeText("Invalid User email or password", 'login_password','password_error');
+          changeText("Invalid User email or password", 'login_email', 'email_error');
+          changeText("Invalid User email or password", 'login_password', 'password_error');
         }
       } else {
         // if users not exist in the local storage throw an error message
-        changeText("No user found, try contact support",'login_email','email_error');
+        changeText("No user found, try contact support", 'login_email', 'email_error');
       }
       localStorage.setItem('logInuser', tempiD);
       localStorage.setItem('logInuserName', tempName);
-      }else{
-        // if password is empty, throw an error
-        changeText("Password is not correct", 'login_password','password_error');
-      }
-    }else{
-      // if email is empty, throw an error
-        changeText("Email not found", 'login_email','email_error');
+    } else {
+      // if password is empty, throw an error
+      changeText("Password is not correct", 'login_password', 'password_error');
     }
-    if(!flag)
-    setTimeout(() => {location.reload()}, 1500);
-    
+  } else {
+    // if email is empty, throw an error
+    changeText("Email not found", 'login_email', 'email_error');
+  }
+  if (!flag)
+    setTimeout(() => { location.reload() }, 1500);
+
 }
 
 
